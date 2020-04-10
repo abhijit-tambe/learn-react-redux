@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import isLogged from '../src/Reducers/isLogged.js';
+import {createStore} from'redux';
+import counterReducer from './Reducers/counter';
+import allReducers from './Reducers';
+import {Provider} from 'react-redux';
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+// store.subscribe(()=>{
+
+// })
 
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode></Provider>,
   document.getElementById('root')
 );
 
